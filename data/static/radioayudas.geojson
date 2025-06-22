@@ -1,0 +1,832 @@
+{
+	"type": "FeatureCollection",
+	"features": [
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "YES",
+				"name": "YESTE"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.354,
+					38.365
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BLN",
+				"name": "BAILÉN"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.631,
+					38.168
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "HIJ",
+				"name": "HINOJOSA DEL DUQUE"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.092,
+					38.513
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CDB",
+				"name": "CÓRDOBA"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.845,
+					37.856
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MAR",
+				"name": "MARTÍN"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.950,
+					37.072
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MAR",
+				"name": "MARTÍN"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.950,
+					37.072
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MAR",
+				"name": "MARTÍN"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.950,
+					37.072
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "SVL",
+				"name": "SEVILLA"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.768,
+					37.443
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "IMRF",
+				"name": "MORÓN"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.636,
+					37.177
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "GDA",
+				"name": "GRANADA"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.983,
+					37.188
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MGA",
+				"name": "MÁLAGA"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.356,
+					36.828
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VJF",
+				"name": "VEJER DE LA FRONTERA"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.96,
+					36.236
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CEU",
+				"name": "CEUTA"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.312,
+					35.908
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MUR",
+				"name": "MURCIA"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.126,
+					37.815
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "ATE",
+				"name": "ALICANTE"
+			},
+			"geometry": {
+				"coordinates": [
+					-0.588,
+					38.291
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CCS",
+				"name": "CÁCERES"
+			},
+			"geometry": {
+				"coordinates": [
+					-6.466,
+					39.539
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VBZ",
+				"name": "BADAJOZ"
+			},
+			"geometry": {
+				"coordinates": [
+					-6.817,
+					38.892
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "POS",
+				"name": "POLLENSA"
+			},
+			"geometry": {
+				"coordinates": [
+					3.103,
+					39.944
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CDP",
+				"name": "CAPDEPERA"
+			},
+			"geometry": {
+				"coordinates": [
+					3.422,
+					39.691
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MJV",
+				"name": "MALLORCA"
+			},
+			"geometry": {
+				"coordinates": [
+					2.757,
+					39.440
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MHN",
+				"name": "MENORCA"
+			},
+			"geometry": {
+				"coordinates": [
+					4.216,
+					39.865
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "IBZ",
+				"name": "IBIZA"
+			},
+			"geometry": {
+				"coordinates": [
+					1.363,
+					38.871
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VTB",
+				"name": "VILLATOBAS"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.469,
+					39.783
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "TLD",
+				"name": "TOLEDO"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.340,
+					39.970
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "NVS",
+				"name": "NAVAS DEL REY"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.255,
+					40.371
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "PDT",
+				"name": "PERALES DE TAJUDIA"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.354,
+					40.256
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CJN",
+				"name": "CASTEJÓN"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.546,
+					40.377
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "SIE",
+				"name": "SOMOSIERRA"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.606,
+					41.160
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "RBO",
+				"name": "ROBLEDILLO"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.255,
+					40.862
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BAN",
+				"name": "BARAHONA"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.629,
+					41.334
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CMA",
+				"name": "CALAMOCHA"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.294,
+					40.879
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "NEA",
+				"name": "TABANERA DEL CERRATO"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.106,
+					42.031
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "ZMR",
+				"name": "ZAMORA"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.650,
+					41.536
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "DGO",
+				"name": "DOMINGO"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.887,
+					42.458
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VRA",
+				"name": "VITORIA"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.859,
+					42.737
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CLS",
+				"name": "CALLES"
+			},
+			"geometry": {
+				"coordinates": [
+					-0.992,
+					39.714
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MLA",
+				"name": "MAELLA"
+			},
+			"geometry": {
+				"coordinates": [
+					0.162,
+					41.129
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BRG",
+				"name": "BAGUR"
+			},
+			"geometry": {
+				"coordinates": [
+					3.2,
+					41.948
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CLE",
+				"name": "CALELLA"
+			},
+			"geometry": {
+				"coordinates": [
+					2.629,
+					41.645
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VLA",
+				"name": "VILLAFRANCA"
+			},
+			"geometry": {
+				"coordinates": [
+					1.546,
+					41.348
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "PPN",
+				"name": "PAMPLONA NORTE"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.703,
+					42.740
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "PPS",
+				"name": "PAMPLONA SUR"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.659,
+					42.694
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BTZ",
+				"name": "BIARRITZ"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.510,
+					43.468
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VAB",
+				"name": "ALBACETE"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.023,
+					38.935
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "AL",
+				"name": "SALAMANCA"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.459,
+					41.027
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "EON",
+				"name": "LEÓN"
+			},
+			"geometry": {
+				"coordinates": [
+					-5.647,
+					42.595
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "STG",
+				"name": "SANTIAGO"
+			},
+			"geometry": {
+				"coordinates": [
+					-8.425,
+					42.928
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VGO",
+				"name": "VIGO"
+			},
+			"geometry": {
+				"coordinates": [
+					-8.604,
+					42.325
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "LRA",
+				"name": "LA CORUÑA"
+			},
+			"geometry": {
+				"coordinates": [
+					-8.309,
+					43.400
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "VES",
+				"name": "ASTURIAS"
+			},
+			"geometry": {
+				"coordinates": [
+					-6.010,
+					43.558
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "SNR",
+				"name": "SANTANDER"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.905,
+					43.451
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BLV",
+				"name": "BILBAO"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.936,
+					43.305
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "JRZ",
+				"name": "JÉREZ"
+			},
+			"geometry": {
+				"coordinates": [
+					-6.025,
+					36.819
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MLG",
+				"name": "MÁLAGA AEROPUERTO SUR"
+			},
+			"geometry": {
+				"coordinates": [
+					-4.506,
+					36.680
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "AMR",
+				"name": "ALMERÍA"
+			},
+			"geometry": {
+				"coordinates": [
+					-2.260,
+					36.835
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "MUR",
+				"name": "MURCIA"
+			},
+			"geometry": {
+				"coordinates": [
+					-1.121,
+					37.803
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "CNR",
+				"name": "COLMENAR"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.737,
+					40.646
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "SSY",
+				"name": "SAN SEBASTIÁN DE LOS REYES"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.578,
+					40.548
+				],
+				"type": "Point"
+			}
+		},
+		{
+			"type": "Feature",
+			"properties": {
+				"ind": "BRA",
+				"name": "BARAJAS"
+			},
+			"geometry": {
+				"coordinates": [
+					-3.559,
+					40.471
+				],
+				"type": "Point"
+			}
+		}
+		
+	]
+}

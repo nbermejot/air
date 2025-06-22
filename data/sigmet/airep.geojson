@@ -1,0 +1,1 @@
+{"type": "FeatureCollection", "features": [{"type": "Feature", "geometry": {"type": "Point", "coordinates": [-3.166, 40.249]}, "properties": {"tipo": "Engelamiento", "color": "blue", "cat": "moderada", "lng": -3.166, "lat": 40.249, "hora": "17-03-2025 07:55", "nivel": "090", "numero": 1, "raw": "ARS AFR2XK MOD ICE OBS AT 0755Z N4015W00310 FL090=\n"}}]}

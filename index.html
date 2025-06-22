@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>VISOR OVM con sidebar-v2</title>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css"><!-- LEAFLET -->
+	<link rel="stylesheet" href="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.18.0/dist/leaflet-geoman.css">
+	<!-- LEAFLET GEOMANN 2.18-->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+	<!-- BOOTSTRAP 4 -->
+	<link rel="stylesheet"
+		href="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/css/bootstrap4-toggle.min.css"
+		rel="stylesheet"><!-- BOOTSTRAP TOGGLE -->
+	<link rel="stylesheet" href="css/leaflet-sidebar.css" />
+	<link rel="stylesheet" href="css/estilo.css" />
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script><!-- MOMENT -->
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/js/all.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script><!-- JQUERY 3.7 -->
+	<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.13.3/jquery-ui.min.js"></script><!-- JQUERY-UI 1.13-->
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.min.js"></script><!-- BOOTSTRAP -->
+	<script src="https://cdn.jsdelivr.net/gh/gitbrent/bootstrap4-toggle@3.6.1/js/bootstrap4-toggle.min.js"></script>
+	<!-- BOOTSTRAP TOGGLE-->
+	<script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script><!-- LEAFLET 1.7.1 -->
+	<script src="https://unpkg.com/@geoman-io/leaflet-geoman-free@2.18.0/dist/leaflet-geoman.js"></script>
+	<!-- LEAFLET-GEOMANN 2.18-->
+	<script src="js/leaflet-sidebar.js"></script>
+	<script src="js/leaflet-svg-shape-markers.js"></script>
+	<script src="js/sigmet.js"></script>
+	<script src="js/airep.js"></script>
+	<script src="js/airmet.js"></script>
+	<script src="js/metar.js"></script>
+	<script src="js/mapa.js"></script>
+	<script src="js/ovm.js"></script>
+
+	<script>
+		moment().format();
+	</script>
+</head>
+
+<body>
+	<!--#################################### NAVBAR-MENÚ ####################################################-->
+	<nav class="navbar navbar-dark bg-dark">
+		<div class="container-fluid">
+			<div id="barra">
+				<span id="titulo_navbar" class="navbar-text">Visor OVM</span>
+				<button id="drawTools" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation"><i class="fa-solid fa-pencil"></i>
+					Dibujar</button>
+				<button id="hideLegend" class="navbar-toggler" type="button" data-bs-toggle="collapse"
+					data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+					aria-expanded="false" aria-label="Toggle navigation"><i class="fa-regular fa-map"></i>
+					Leyenda</button>
+				<span id="reloj"></span>
+			</div>
+		</div>
+	</nav>
+
+	<!--#################################### SIDEBAR ####################################################-->
+	<!-- optionally define the sidebar content via HTML markup -->
+	<div id="sidebar" class="leaflet-sidebar collapsed">
+		<!-- nav tabs -->
+		<div class="leaflet-sidebar-tabs">
+			<!-- top aligned tabs -->
+			<ul role="tablist">
+				<li><a href="#home" role="tab"><i class="fas fa-plane"></i></a></li>
+				<li><a href="#autopan" role="tab"><i class="fa fa-bars active"></i></a></li>
+				<li><a href="#metar" role="tab"><i class="fas fa-thermometer"></i></a></li>
+				<li><a href="#limits" role="tab"><i class="fas fa-globe"></i></a></li>
+			</ul>
+
+			<ul role="tablist">
+				<li><a href="#settings" role="tab"><i class="fas fa-cog" aria-hidden="true"></i></a></li>
+			</ul>
+		</div>
+		<!-- panel content -->
+		<div class="leaflet-sidebar-content">
+			<!-- pane OVM-->
+			<div class="leaflet-sidebar-pane" id="home">
+				<h1 class="leaflet-sidebar-header">Productos OVM<span class="leaflet-sidebar-close"><i
+							class="fa fa-caret-left"></i></span>
+				</h1>
+				<div class="form-row">
+					<div class="btn-group" role="group">
+						<button type="button" id="sigmet" class="btn btn-dark"
+							title="SIGMETS de NWS-NOAA,cada 3 min">SIGMET</button>
+						<div class="fenomeno">Fenómeno:</div>
+						<button type="button" id="sigmet_ts" class="btn btn-info"
+							style="background-color:orange; color: white;" title="">TS</button>
+						<button type="button" id="sigmet_tur" class="btn btn-info"
+							style="background-color:red; color: white;" title="">TUR</button>
+						<button type="button" id="sigmet_mtw" class="btn btn-info"
+							style="background-color:lime; color: black;" title="">MTW</button>
+						<button type="button" id="sigmet_ice" class="btn btn-info"
+							style="background-color:blue; color: white;" title="">ICE</button>
+						<button type="button" id="sigmet_va" class="btn btn-info"
+							style="background-color:magenta; color: white;" title="">VA</button>
+					</div>
+				</div>
+				<div class="form-row">
+					<button type="button" id="airmet" class="btn btn-dark" title="AIRMETS">AIRMET</button>
+				</div>
+				<div class="form-row">
+					<button type="button" id="airep" class="btn btn-dark" title="AIREPs">AIREP</button>
+				</div>
+				<div class="form-row">
+					<div class="fir">FIR</div>
+					<div class="tma">CTR</div>
+					<div class="tma">TMA</div>
+					<div class="radioayudas">Radioayudas</div>
+				</div>
+				<div class="form-row">
+					<button type="button" id="fir" class="btn btn-dark" title="AIREPs">FIR</button>
+					<button type="button" id="ctr" class="btn btn-dark" title="AIREPs">CTR</button>
+					<button type="button" id="tma" class="btn btn-dark" title="AIREPs">TMA</button>
+					<input type="checkbox" id="toggle-event6" data-toggle="toggle" data-size="small"
+						data-on="<i class='fa fa-eye' aria-hidden='true'></i>" data-off="Off" data-onstyle="success">
+				</div>
+			</div>
+
+			<!-- pane FORMULARIO SIGMET-->
+			<div class="leaflet-sidebar-pane" id="autopan">
+				<h1 class="leaflet-sidebar-header">SIGMET<span class="leaflet-sidebar-close"><i
+							class="fa fa-caret-left"></i></span></h1>
+				<!--PESTAÑA SIGMET-->
+				<form id="form_sigmet" style="background-color:beige;">
+					<div class="form-row">
+						<div class="col-md-6">
+							<label id="titulo_fecha" for="dini">Fecha inicio/fin:</label>
+							<input type="date" name="dini" value="" id="dini">
+						</div>
+						<div class="col-md-3">
+							<label id="titulo_fecha" for="hini">Hora(UTC):</label>
+							<input type="number" class="form-control form-control-sm" id="hini" name="hini" value=""
+								min="00" max="23" step="01">
+						</div>
+						<div class="col-md-3">
+							<label id="titulo_fecha" for="mini">Minuto:</label>
+							<input type="number" class="form-control form-control-sm" id="mini" name="mini" value=""
+								min="00" max="59" step="05">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<!--<label id="titulo" for="dfin">Fecha fin:</label> -->
+							<input type="date" name="dfin" value="" id="dfin">
+						</div>
+						<div class="form-group col-md-3">
+							<!--<label id="titulo" for="hfin">Hora(UTC):</label> -->
+							<input type="number" class="form-control form-control-sm" id="hfin" name="hfin" value=""
+								min="00" max="23" step="01">
+						</div>
+						<div class="form-group col-md-3">
+							<!--<label id="titulo" for="mfin">Minuto:</label> -->
+							<input type="number" class="form-control form-control-sm" id="mfin" name="mfin" value="00"
+								min="00" max="59" step="05">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label id="titulo_fir" for="area">FIR:</label>
+							<select class="form-control form-control-sm" name="area" id="area" onchange="cambia_fir()">
+								<option>MADRID</option>
+								<option>BARCELONA</option>
+							</select>
+						</div>
+						<div class="col-md-3">
+							<label id="titulo_fir_madrid" for="num_madrid">Madrid</label>
+							<input type="number" class="form-control form-control-sm" id="num_madrid" name="num_madrid"
+								value="1" min="1" max="" step="1">
+						</div>
+						<div class="col-md-3">
+							<label id="titulo_fir_barcelona" style="display:none" for="num_barcelona">Barcelona</label>
+							<input type="number" class="form-control form-control-sm" id="num_barcelona"
+								style="display:none" name="num_barcelona" value="1" min="1" max="" step="1">
+						</div>
+					</div>
+					<div class="form-row">
+						<div class="form-group col-md-5">
+							<label id="titulo" for="fenomeno"></label>
+							<select class="form-control form-control-sm" name="fenomeno" id="fenomeno"
+								onchange="cambia_estilo()">
+								<option>EMBD TS</option>
+								<option>FRQ TS</option>
+								<option>SQL TS</option>
+								<option>SEV TURB</option>
+								<option>SEV ICE</option>
+								<option>SEV ICE FZRA</option>
+								<option>SEV MTW</option>
+								<option>HVY DS</option>
+								<option>HVY SS</option>
+								<option>OBSC TS</option>
+								<option>OBSC TSGR</option>
+								<option>EMBD TSGR</option>
+								<option>FRQ TSGR</option>
+								<option>SQL TSGR</option>
+								<option>RDOACT CLD</option>
+								<option>VA</option>
+								<option>TC</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="titulo" for="obs"></label>
+							<select class="form-control form-control-sm" name="obs" id="obs">
+								<option>OBS</option>
+								<option>FCST</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<label id="titulo" for="position"></label>
+							<select class="form-control form-control-sm" name="position" id="position">
+								<option>WI</option>
+								<option>N OF LINE</option>
+								<option>NE OF LINE</option>
+								<option>E OF LINE</option>
+								<option>SE OF LINE</option>
+								<option>S OF LINE</option>
+								<option>SW OF LINE</option>
+								<option>W OF LINE</option>
+								<option>NW OF LINE</option>
+								<option>N OF</option>
+								<option>E OF</option>
+								<option>S OF</option>
+								<option>W OF</option>
+								<option>N OF AND E OF</option>
+								<option>N OF AND W OF</option>
+								<option>S OF AND W OF</option>
+								<option>S OF AND W OF</option>
+								<option>ENTIRE FIR</option>
+							</select>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<label id="titulo_coordenadas" for="coordenadas">Coordenadas del polígono/linea/punto
+							dibujado:</label>
+						<textarea class="form-control" name="coordenadas" value="" id="coordenadas" rows="3"
+							style="font-size: 0.7em;font-weight: bold"></textarea>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-6">
+							<label id="titulo_top" for="tope">TOP FL</label>
+							<select class="form-control form-control-sm" name="tope" id="tope">
+								<option>TOP FL250</option>
+								<option>TOP FL260</option>
+								<option>TOP FL270</option>
+								<option>TOP FL280</option>
+								<option>TOP FL290</option>
+								<option>TOP FL300</option>
+								<option>TOP FL310</option>
+								<option>TOP FL320</option>
+								<option>TOP FL330</option>
+								<option>TOP FL340</option>
+								<option>TOP FL350</option>
+								<option>TOP FL360</option>
+								<option>TOP FL370</option>
+								<option>TOP FL380</option>
+								<option>TOP FL390</option>
+								<option>TOP FL400</option>
+								<option>TOP FL410</option>
+								<option>TOP FL420</option>
+								<option>TOP FL430</option>
+								<option>TOP FL440</option>
+								<option>TOP FL450</option>
+							</select>
+						</div>
+						<div class="form-group col-md-3">
+							<label id="titulo_fl" for="fl1" style="display:none">FL1</label>
+							<input type="number" class="form-control form-control-sm" style="display:none" id="fl1"
+								name="fl1" value="160" min="00" max="500" step="10">
+						</div>
+						<div class="form-group col-md-3">
+							<label id="titulo_fl2" for="fl2" style="display:none">FL2</label>
+							<input type="number" class="form-control form-control-sm" style="display:none" id="fl2"
+								name="fl2" value="220" min="00" max="500" step="10">
+						</div>
+					</div>
+
+					<div class="form-row">
+						<div class="form-group col-md-4">
+							<select class="form-control form-control-sm" name="direction" id="direction">
+								<option>STNR</option>
+								<option>N</option>
+								<option>NNE</option>
+								<option>NE</option>
+								<option>ENE</option>
+								<option>E</option>
+								<option>ESE</option>
+								<option>SE</option>
+								<option>SSE</option>
+								<option>S</option>
+								<option>SSW</option>
+								<option>SW</option>
+								<option>WSW</option>
+								<option>W</option>
+								<option>WNW</option>
+								<option>NW</option>
+								<option>NNW</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<select class="form-control form-control-sm" name="velocity" id="velocity">
+								<option></option>
+								<option>5KT</option>
+								<option>10KT</option>
+								<option>15KT</option>
+								<option>20KT</option>
+								<option>25KT</option>
+								<option>30KT</option>
+								<option>35KT</option>
+								<option>40KT</option>
+								<option>45KT</option>
+								<option>50KT</option>
+								<option>55KT</option>
+								<option>60KT</option>
+								<option>65KT</option>
+								<option>70KT</option>
+							</select>
+						</div>
+						<div class="form-group col-md-4">
+							<select class="form-control form-control-sm" name="intensity" id="intensity">
+								<option>NC</option>
+								<option>WKN</option>
+								<option>INTSF</option>
+							</select>
+						</div>
+					</div>
+					<button id="submit" type="submit" class="btn btn-primary"
+						title="Construye el SIGMET según los campos del formulario y lo muestra debajo">SIGMET</button>
+					<button id="save_txt" type="submit" class="btn btn-success"
+						title="Salva el SIGMET que aparece en el textarea en un txt y actualiza el nº de SIGMET emitido">SALVAR
+						TXT</button>
+					<button id="reset" type="submit" value="Reset" class="btn btn-danger"
+						title="Borra el SIGMET, coordenadas y dibujos">BORRAR</button>
+					<div class="form-group">
+						<textarea class="form-control" name="resultado" value="" id="resultado" rows="6"
+							style="font-size: 0.7em;font-weight: bold"></textarea>
+					</div>
+				</form>
+				<!-- FIN FORMULARIO SIGMET-->
+			</div>
+			<!-- pane METARS,TAFS-->
+			<div class="leaflet-sidebar-pane" id="metar">
+				<h1 class="leaflet-sidebar-header">METAR-TAF<span class="leaflet-sidebar-close"><i
+							class="fa fa-caret-left"></i></span></h1>
+				<p>Here goes all about metars and tafs</p>
+				<div class="form-row">
+					<button type="button" id="metar_taf" class="btn btn-dark" title="METAR y TAFs">METAR/TAF</button>
+					<select class="form-select form-select-sm" id="select_omae" style="width:auto;">
+						<option value="todos" selected="selected">Todos</option>
+						<option value="este">OMAe Este</option>
+						<option value="interior">OMAe Interior</option>
+						<option value="sur">OMAe Sur</option>
+						<option value="norte">OMAe Norte</option>
+					</select>
+					<select class="form-select form-select-sm" id="select_radiusMetar" style="width:auto;">
+						<option value="7">7</option>
+						<option value="8" selected="selected">8</option>
+						<option value="9">9</option>
+						<option value="10">10</option>
+					</select>
+				</div>
+				<div class="titulo_aeropuertos">SPECI/NIL</div>
+				<div class="formulario_airep">
+					<div contenteditable="true" class="cajita" id="text_airep"></div>
+					<!--<textarea class="form-control" name="text_airep" value="" id="text_airep" rows="15" cols="65" style="font-size: 0.6em;font-weight: bold"></textarea> -->
+				</div>
+			</div>
+			<!-- pane BASEMAPS, CTR, FIR, PROVINCIAS-->
+			<div class="leaflet-sidebar-pane" id="limits">
+				<h1 class="leaflet-sidebar-header">BASEMAPS, LÍMITES<span class="leaflet-sidebar-close"><i
+							class="fa fa-caret-left"></i></span>
+				</h1>
+				<p>Here goes all about basemaps and limits</p>
+				<div class="overlay-thumbnails">
+					<figure>
+						<img class="overlay-item" id="openTopoMap" src="images/openTopoMap.png"
+							onclick="addBasemap(this)" />
+						<figcaption>Open TopoMap</figcaption>
+					</figure>
+					<figure>
+						<img class="overlay-item" id="mdtRelieve" title="sample title 1" src="images/mdtRelieve.png"
+							onclick="addBasemap(this)" />
+						<figcaption>Relieve MDT</figcaption>
+					</figure>
+					<figure>
+						<img class="overlay-item" id="dark" title="sample title 1" src="images/dark.png"
+							onclick="addBasemap(this)" />
+						<figcaption>Dark</figcaption>
+					</figure>
+					<figure>
+						<img class="overlay-item" id="osm" title="sample title 1" src="images/osm.png"
+							onclick="addBasemap(this)" />
+						<figcaption>Open Street Map</figcaption>
+					</figure>
+				</div>
+				<div class="form-row">
+					<button type="button" id="countries" class="btn btn-dark" title="">Paises</button>
+				</div>
+				<div class="form-row">
+					<button type="button" id="provincias" class="btn btn-dark" title="">Provincias</button>
+					<select class="form-select form-select-sm" id="select_colorProvincia" style="width:auto;">
+						<option value="white" selected="selected">Blanco</option>
+						<option value="black">Negro</option>
+						<option value="red">Rojo</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+
+		<!-- pane SETTINGS-->
+		<div class="leaflet-sidebar-pane" id="settings">
+			<h1 class="leaflet-sidebar-header">Settings<span class="leaflet-sidebar-close"><i
+						class="fa fa-caret-left"></i></span></h1>
+			<!--### DESPLEGABLE DE LOS LÍMITES AERONAÚTIVOS ###-->
+		</div>
+	</div>
+	</div>
+	<!--#################################### MAPA ####################################################-->
+	<div id="map"></div>
+
+
+	<script>
+
+		//Reloj de la barra de navegación: se actualiza cada 5 seg 
+		const idReloj = document.getElementById("reloj");
+
+		window.setInterval(function () {
+			idReloj.innerHTML = moment.utc().format('  DD MMM YYYY   HH:mm UTC')
+		}, 5000);
+
+
+		//Definimos la variable mapa
+		const map = L.map('map', {
+			zoomSnap: 0,
+			zoomDelta: 0.25,
+			zoomControl: true,
+			renderer: L.canvas(),
+			zoom: 5.5,
+			center: [40, -4],
+			pmIgnore: false
+		});
+
+
+
+
+		//Iniciamos el mapa: basemap, limites, herramientas de dibujo
+		let myMap = new Map(openTopoMap);
+		myMap.initializeMap();
+		$('#openTopoMap').css('border', '4px solid #ffe3a1');
+
+		//Añadimos el sidebar mediante la libreria leaflet-sidebar.js
+		let sidebar = L.control.sidebar({ container: 'sidebar' })
+			.addTo(map)
+			.open('home');
+
+		map.zoomControl.setPosition('topright').addTo(map);
+
+		//Quitamos que leaflet geomann se inicie por defecto en todas las capas
+		L.PM.setOptIn(true);
+
+
+		//Opciones de inicio de la libreria para dibujar leaflet-geoman.js
+		map.pm.setPathOptions({
+			color: "white",
+			weight: 4,
+			opacity: 1,
+			fillColor: "green",
+			fillOpacity: 1,
+		});
+
+		//Iniciamos OVM: sigmets, airmets, aireps, limites aeronauticos
+		let ovm = new Ovm();
+		ovm.initializeOvm();
+
+
+		//Iniciamos provincias y paises
+		let regions = new Regions();
+		regions.init();
+
+
+		$('#toggle-event6').change(function () {
+			if ($(this).is(":checked")) {
+				loadRadioayudas();
+			} else {
+				removeRadioayudas();
+			}
+		});
+		//metars
+		let metarIsActive = false;
+		$("#metar_taf").on("click", function (e) {
+			e.preventDefault();
+			let radius = parseInt($("#select_radiusMetar").val());
+			let omae = $("#select_omae").val();
+			if (metarIsActive) {
+				$('#metar_taf').css('background-color', 'black').css('color', '#ccc').css('font-weight', 'normal');
+				metarIsActive = false;
+				deleteMetar();
+				//map.removeControl(legendMetar);
+				//clearInterval(intervalMetar);
+				return;
+			} else {
+				$('#metar_taf').css('background-color', 'dodgerblue').css('color', 'white').css('font-weight', 'normal');
+				metarIsActive = true;
+				loadMetarTaf(omae, radius);
+				//intervalMetar = setInterval(loadMetarTaf, 60000, omae, radius);
+				return;
+			}
+		});
+		$('#select_omae').change(function (e) {
+			if (metarIsActive) {
+				e.preventDefault();
+				let radius = parseInt($("#select_radiusMetar").val());
+				let omae = $("#select_omae").val();
+				deleteMetar();
+				//clearInterval(intervalMetar);
+				loadMetarTaf(omae, radius);
+				//intervalMetar = setInterval(loadMetarTaf, 60000, omae, radius);
+				return;
+			}
+		});
+
+		$('#select_radiusMetar').change(function (e) {
+			if (metarIsActive) {
+				e.preventDefault();
+				let radius = parseInt($("#select_radiusMetar").val());
+				let omae = $("#select_omae").val();
+				deleteMetar();
+				//clearInterval(intervalMetar);
+				loadMetarTaf(omae, radius);
+				//intervalMetar = setInterval(loadMetarTaf, 60000, omae, radius);
+				return;
+			}
+		});
+
+		//COMPORTAMIENTO DEL MAPA AL CREAR UN POLIGONO.
+		map.on("pm:create", (e) => {
+			let type_layer = e.shape;
+			//le decimos que queremos que la libreria geoman actue sobre esta capa
+			e.layer.options.pmIgnore = false;
+			L.PM.reInitLayer(e.layer);
+
+			//si es texto que nos deje editarlo
+			if (e.shape === "Text") {
+				e.layer.pm.enable();
+				e.layer.pm.focus();
+			}
+		});
+
+
+
+	</script>
+</body>
+
+</html>
