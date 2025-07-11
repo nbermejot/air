@@ -86,7 +86,7 @@ async function loadFlight(color) {
   try {
 	  removeFlight();
 	  
-      let response = await fetch("data/trafico/flight.json",{
+      let response = await fetch("https://nbermejot.github.io/air/data/trafico/flight.json",{
             method: "POST",
             headers: { "Content-type": "application/json"}
       });
