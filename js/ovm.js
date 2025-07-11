@@ -53,6 +53,7 @@ class Ovm {
 		this._sigmetButton = document.getElementById('sigmet');
 		this._airepButton = document.getElementById('airep');
 		this._airmetButton = document.getElementById('airmet');
+		this._planeButton = document.getElementById('plane');
 		this._navaidButton = document.getElementById('navaid');
 		this._ctrButton = document.getElementById('ctr');
 		this._firButton = document.getElementById('fir');
@@ -64,6 +65,7 @@ class Ovm {
 		this._firIsActive = true;
 		this._sigmetIsActive = false;
 		this._airepIsActive = false;
+		this._planeIsActive = false;
 		
 		// Interval to reload
 		this._intervalAirep = 0;
@@ -114,6 +116,11 @@ class Ovm {
 		    event.preventDefault();
 			this.addCtr();
 		});
+		//Añadir un evento click al botón de tráfico aéreo
+		this._planeButton.addEventListener("click", (event) => {
+		    event.preventDefault();
+			this.addPlane();
+		});
 	}
 	
 	
@@ -129,6 +136,23 @@ class Ovm {
 		    this._sigmetIsActive = true;
 		    loadAllSigmet();
 	        this._intervalSigmet = setInterval(loadAllSigmet, 3000);
+        } 	
+	}
+	
+	//add and remove planes
+	addPlane() {
+		let colorPlane = $("#select_colorPlane").val();
+		console.log("Color avion", colorPlane);
+	    if (this._planeIsActive) {
+            $('#plane').css('background-color','black').css('color','white').css('font-weight','normal');
+		    this._planeIsActive = false;
+		    removeFlight();
+	        //clearInterval(this._intervalSigmet);
+	    } else {
+		    $('#plane').css('background-color','dodgerblue').css('color','white').css('font-weight','normal');
+		    this._planeIsActive = true;
+		    loadFlight(colorPlane);
+	        //this._intervalSigmet = setInterval(loadAllSigmet, 3000);
         } 	
 	}
 	

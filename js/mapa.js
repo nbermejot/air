@@ -87,6 +87,10 @@ class Map {
     map.getPane('metar_tooltip').style.zIndex = 1200
     map.createPane('sigmet_tooltip')
     map.getPane('sigmet_tooltip').style.zIndex = 820
+	map.createPane('flight')
+    map.getPane('flight').style.zIndex = 890
+	map.createPane('flight_tooltip')
+    map.getPane('flight_tooltip').style.zIndex = 900
   }
 
   initializeMap() {

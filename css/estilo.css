@@ -351,14 +351,14 @@ input[type=range]::-moz-range-progress {
   SIDEBAR OVM
 ----------------------------------------------------------------------------- */
 
-#sigmet, #airep, #airmet, #countries, #provincias {
+#sigmet, #airep, #airmet, #countries, #provincias, #plane {
     text-align: center;
 	border-color: black;
 	border-radius: 3px;
 	color: lime;
 }
 
-#sigmet, #airep, #airmet, #countries, #provincias, #metar_taf {
+#sigmet, #airep, #airmet, #countries, #provincias, #metar_taf, #plane {
     font-size: 1em;
 	margin-top: 5%;
 }
@@ -447,6 +447,7 @@ input[type=range]::-moz-range-progress {
     padding: 1px 5px 1px 5px;
     border-radius: 3px;
 	font-weight: bold;
+	margin-top: 4%;
 }
 
 .circulos {
@@ -513,6 +514,11 @@ input[type=range]::-moz-range-progress {
   color: darkslategray;
   font-size: 16px;
   padding: 5px 5px 5px 15px;
+}
+
+#select_colorPlane {
+  font-size: 0.8em;
+  margin-top: 5%;
 }
 
 /* -----------------------------------------------------------------------------
