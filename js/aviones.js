@@ -87,7 +87,7 @@ async function loadFlight(color) {
 	  removeFlight();
 	  
       let response = await fetch("data/trafico/flight.json",{
-            method: "POST",
+            method: "GET",
             headers: { "Content-type": "application/json"}
       });
       let data = await response.json();
